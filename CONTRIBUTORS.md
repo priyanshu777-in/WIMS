@@ -28,3 +28,17 @@ The web layer (`server.cpp`, `web/`) reuses these classes without changing `pbl.
   `remove`, `clear`, save/load) are implemented together with the team lead.
 - `server.cpp` uses the same `Manager` object: login returns its `name` and
   `role`, and product deletion is guarded by `canManage()`.
+
+### Warehouse & queue support — Ankit Singh Negi
+
+- `Warehouse` holds `id`, `location`, `capacity` and an `InventoryList`
+  (composition), so its products are created and destroyed with it.
+- Capacity is enforced before adding or restocking, using
+  `inventory.totalQuantity() + amount <= capacity`.
+- The backend keeps `std::vector<Warehouse*>` plus an `activeId`; each warehouse
+  saves to its own `inventory_<id>.txt` file and the list is stored in
+  `warehouses.txt`.
+- A warehouse can only be removed when it is empty, and the last warehouse
+  cannot be removed.
+- `OrderQueue` support: `front` and `rear` pointers, O(1) enqueue at the rear and
+  O(1) dequeue at the front; every order remembers its warehouse.
