@@ -1,0 +1,23 @@
+.DS_Store
+*.o
+*.dSYM
+
+# compiled binaries (rebuild with make)
+wims_server
+wims_console
+
+# runtime data (created automatically)
+warehouses.txt
+inventory_*.txt
+orders.txt
+order_warehouse.txt
+customers.txt
+suppliers.txt
+audit_log.txt
+sales.txt
+
+# documentation build intermediates
+docs/_html/
+
+# project documentation (kept local)
+docs/
